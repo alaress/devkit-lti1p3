@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+2.4.7
+-----
+
+* Fix response null-pointer exceptions upon calling LTI tools/platforms in cases when there's no response body
+
+2.4.6
+-----
+
+* Fix already-submitted forms data assignment
+
 2.4.5
 -----
 * Added `lineitem` to AGS claim
