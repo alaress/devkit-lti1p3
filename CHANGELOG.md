@@ -1,15 +1,53 @@
 CHANGELOG
 =========
 
+2.8.0
+-----
+
+* Added support for `autoplay`, `camera`, `display-capture`, `fullscreen`, `microphone` in iframe ResourceLink
+* Fixed Deep Linking URL validation
+
+2.7.0
+-----
+
+* Added support for configurable LTI message TTL via `JWT_TTL` environment variable
+
+2.6.0
+-----
+
+* Added in-iframe ResourceLink launch option
+
+2.5.0
+-----
+
+* Added rel="differences" link to the NRPS membership service
+* Added time-based membership differences exposure to the NRPS membership service
+* Added members' soft delete
+
+2.4.7
+-----
+
+* Fix response null-pointer exceptions upon calling LTI tools/platforms in cases when there's no response body
+
+2.4.6
+-----
+
+* Fix already-submitted forms data assignment
+
+2.4.5
+-----
+* Added `lineitem` to AGS claim
+* Added Redis namespace support
+
 2.4.4
 -----
+
 * Updated `symfony/flex` in order to migrate from the outdated flex infrastructure
 
 2.4.3
 -----
 
 * Updated `lti1p3-core` library up to 6.7.1 in composer.lock
-
 
 2.4.2
 -----

@@ -74,7 +74,9 @@ class LtiServiceClientAction
 
         $serviceData = null;
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if (!$form->isSubmitted()) {
+            $form->setData($request->query->all());
+        } elseif ($form->isValid()) {
 
             $formData = $form->getData();
 
@@ -111,8 +113,9 @@ class LtiServiceClientAction
             try {
                 $response = $this->client->request($registration, $method, $serviceUrl, $options, $scopes);
             } catch (LtiExceptionInterface $exception) {
-                if ($exception->getPrevious() instanceof RequestException){
-                    $response = $exception->getPrevious()->getResponse();
+                $previous = $exception->getPrevious();
+                if ($previous instanceof RequestException && $previous->getResponse() !== null) {
+                    $response = $previous->getResponse();
                 } else {
                     throw $exception;
                 }
@@ -156,8 +159,6 @@ class LtiServiceClientAction
             }
 
             $this->flashBag->add($flashType, $flashMessage);
-        } else {
-            $form->setData($request->query->all());
         }
 
         return new Response(
